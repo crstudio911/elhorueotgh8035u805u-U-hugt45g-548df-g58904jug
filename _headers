@@ -1,0 +1,7 @@
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  X-Robots-Tag: noindex, nofollow
+  Referrer-Policy: no-referrer
+  Cross-Origin-Opener-Policy: same-origin
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self' https://coolai-api.uuuuouuuuuuouuu.workers.dev; object-src 'none'; base-uri 'none'; form-action 'self'; frame-ancestors 'none'

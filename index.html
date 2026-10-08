@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>CoolAi - لوحة التحكم</title>
+<link rel="stylesheet" href="main.css">
+</head>
+<body>
+<div id="login" class="auth">
+<form id="lf" class="card">
+<h1>لوحة التحكم</h1>
+<label class="fl">اسم المستخدم<input id="lu" autocomplete="username"></label>
+<label class="fl">كلمة السر<input id="lp" type="password" autocomplete="current-password"></label>
+<div class="err" id="le"></div>
+<button class="btn primary block" id="lb">دخول</button>
+</form>
+</div>
+<div id="app" hidden>
+<aside class="side">
+<div class="brand">CoolAi <small>Admin</small></div>
+<nav id="nav"></nav>
+<div class="foot"><button class="btn" id="th">الوضع</button><button class="btn" id="lo">خروج</button></div>
+</aside>
+<main>
+<header class="top"><h2 id="ttl"></h2></header>
+<div id="main" class="content"></div>
+</main>
+</div>
+<dialog id="dlg"><form id="dlgf"></form></dialog>
+<div id="toasts"></div>
+<script src="main.js"></script>
+</body>
+</html>
