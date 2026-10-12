@@ -79,3 +79,5 @@ dialog h3{margin-bottom:1rem}
 .badge.pro{color:#1a1300;background:linear-gradient(135deg,#f5d36b,#d29922)}
 .badge.free{color:var(--muted)}
 select{max-width:100%}
+.res.ok{color:var(--ok)}.res.bad{color:var(--danger)}.res a{color:inherit;opacity:.85;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.danger-zone{border-color:color-mix(in srgb,var(--danger) 45%,transparent)}.danger-zone h3{color:var(--danger)}
