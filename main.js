@@ -1,5 +1,6 @@
 (function(){
-var API='https://coolai-api.uuuuouuuuuuouuu.workers.dev',TK='coolai_admin_t',THK='coolai_admin_theme';
+function afetch(p,o){function go(n){return fetch(APIS[n]+p,o).then(function(r){var ct=r.headers.get('Content-Type')||'';if((r.status===429||r.status>=500)&&ct.indexOf('json')<0&&n+1<APIS.length)return go(n+1);return r},function(e){if(n+1<APIS.length)return go(n+1);throw e})}return go(0)}
+var APIS=['https://coolai-api.uuuuouuuuuuouuu.workers.dev','https://coolai-api-2.7oka12345678910.workers.dev'],API=APIS[0],TK='coolai_admin_t',THK='coolai_admin_theme';
 var $=function(i){return document.getElementById(i)},main,cur='stats';
 document.documentElement.setAttribute('data-theme',localStorage.getItem(THK)||(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'));
 var TITLES={stats:'نظرة عامة',users:'المستخدمين',invoices:'الفواتير',promos:'أكواد الهدايا',offers:'أكواد الخصم',pro:'خطة Pro والأخبار',posts:'المنشورات',messages:'رسائل المجتمع',data:'كل البيانات',settings:'الإعدادات وشخصية Cool'};
@@ -12,7 +13,7 @@ var EM={email:'البريد غير صالح',exists:'البريد مستخدم �
 function msg(r){return EM[r.error]||r.error||'حصل خطأ'}
 function out(){sessionStorage.removeItem(TK);$('app').hidden=true;$('login').hidden=false}
 function call(act,body){
-return fetch(API+'/api/admin/'+act,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+(sessionStorage.getItem(TK)||'')},body:JSON.stringify(body||{})}).then(function(r){return r.json().catch(function(){return{}}).then(function(j){j.status=r.status;if(r.status===401){out();j.error='انتهت الجلسة'}return j})}).catch(function(){return{error:'تعذر الاتصال بالخادم',status:0}})}
+return afetch('/api/admin/'+act,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+(sessionStorage.getItem(TK)||'')},body:JSON.stringify(body||{})}).then(function(r){return r.json().catch(function(){return{}}).then(function(j){j.status=r.status;if(r.status===401){out();j.error='انتهت الجلسة'}return j})}).catch(function(){return{error:'تعذر الاتصال بالخادم',status:0}})}
 function ask(title,fields,ok){
 return new Promise(function(res){
 var d=$('dlg'),f=$('dlgf'),ins={};f.textContent='';f.appendChild(h('h3',{text:title}));
@@ -201,7 +202,7 @@ $('th').onclick=function(){var t=document.documentElement.getAttribute('data-the
 $('lo').onclick=out;
 $('lf').onsubmit=function(e){
 e.preventDefault();$('le').textContent='';$('lb').disabled=true;
-fetch(API+'/api/admin/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({user:$('lu').value,pass:$('lp').value})}).then(function(r){return r.json().catch(function(){return{}})}).then(function(j){
+afetch('/api/admin/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({user:$('lu').value,pass:$('lp').value})}).then(function(r){return r.json().catch(function(){return{}})}).then(function(j){
 $('lb').disabled=false;
 if(!j.token)return $('le').textContent=j.error||'تعذر الدخول';
 sessionStorage.setItem(TK,j.token);$('lp').value='';$('lu').value='';boot()}).catch(function(){$('lb').disabled=false;$('le').textContent='تعذر الاتصال بالخادم'})};
