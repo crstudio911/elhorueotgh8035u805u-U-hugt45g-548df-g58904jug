@@ -1,6 +1,6 @@
 (function(){
 function afetch(p,o){var T={};function go(n){T[n]=1;var c=new AbortController(),tm=setTimeout(function(){c.abort()},45000);function nx(){for(var k=1;k<=APIS.length;k++){var j=(n+k)%APIS.length;if(!T[j])return j}return -1}return fetch(APIS[n]+p,Object.assign({},o,{signal:c.signal})).then(function(r){clearTimeout(tm);var j=nx();if((r.status>=500||(r.status===429&&(r.headers.get('Content-Type')||'').indexOf('json')<0))&&j>=0)return go(j);return r},function(e){clearTimeout(tm);var j=nx();if(j>=0)return go(j);throw e})}return go(0)}
-var APIS=['https://coolai-api.uuuuouuuuuuouuu.workers.dev','https://coolai-api-2.7oka12345678910.workers.dev'],API=APIS[0],TK='coolai_admin_t',THK='coolai_admin_theme';
+var APIS=['https://coolai-api.uuuuouuuuuuouuu.workers.dev','https://coolai-api-2.7oka12345678910.workers.dev','https://coolai-api3.mahmoudmomajeed.workers.dev'],API=APIS[0],TK='coolai_admin_t',THK='coolai_admin_theme';
 var $=function(i){return document.getElementById(i)},main,cur='stats';
 document.documentElement.setAttribute('data-theme',localStorage.getItem(THK)||(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'));
 var TITLES={stats:'نظرة عامة',users:'المستخدمين',invoices:'الفواتير',promos:'أكواد الهدايا',offers:'أكواد الخصم',pro:'باقات Pro وMax والأخبار',posts:'المنشورات',messages:'رسائل المجتمع',data:'كل البيانات',settings:'الإعدادات وشخصية Cool',servers:'حالة السيرفرات'};
